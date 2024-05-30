@@ -1,5 +1,6 @@
 # Uncomment the next line to define a global platform for your project
- platform :ios, '15.0'
+platform :ios, '15.0'
+workspace 'news-ios'
 
 target 'news-ios' do
   # Comment the next line if you don't want to use dynamic frameworks
@@ -19,4 +20,19 @@ target 'news-ios' do
     # Pods for testing
   end
 
+end
+
+target 'Core' do
+  
+  project 'Modules/Core/Core'
+  use_frameworks!
+  
+  pod 'Moya'
+  pod 'SDWebImage'
+  pod 'SnapKit'
+  
+  target 'CoreTests' do
+    inherit! :search_paths
+    # Pods for testing
+  end
 end

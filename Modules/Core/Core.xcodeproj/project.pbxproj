@@ -112,8 +112,8 @@
 		CE7920132C09CE3800E1AD66 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				CE7920142C09CE4200E1AD66 /* NewsDetailViewModel.swift */,
 				CE7920152C09CE4200E1AD66 /* NewsListViewModel.swift */,
+				CE7920142C09CE4200E1AD66 /* NewsDetailViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";

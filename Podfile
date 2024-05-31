@@ -10,6 +10,7 @@ target 'news-ios' do
   pod 'Moya'
   pod 'SDWebImage'
   pod 'SnapKit'
+  pod 'IQKeyboardManagerSwift'
 
   target 'news-iosTests' do
     inherit! :search_paths
@@ -30,7 +31,8 @@ target 'Core' do
   pod 'Moya'
   pod 'SDWebImage'
   pod 'SnapKit'
-  
+  pod 'IQKeyboardManagerSwift'
+
   target 'CoreTests' do
     inherit! :search_paths
     # Pods for testing

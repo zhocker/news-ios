@@ -9,8 +9,8 @@ import Foundation
 import UIKit
 
 public extension UIWindow {
-    public func animateTransition(duration: TimeInterval = 0.37,
-                                  options: UIView.AnimationOptions = [.transitionCrossDissolve]) {
+    func animateTransition(duration: TimeInterval = 0.37,
+                           options: UIView.AnimationOptions = [.transitionCrossDissolve]) {
         UIView.transition(with: self, duration: duration, options: options, animations: nil)
     }
 }

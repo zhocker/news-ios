@@ -156,35 +156,43 @@ class NewsDetailViewController: UIViewController {
     }
 
     private func populateData() {
+        populateTextFields()
+        configureImageView()
+    }
+
+    private func populateTextFields() {
         titleLabel.text = article.title
         descriptionLabel.text = article.description
         authorLabel.text = "Source: \(article.author ?? "Unknown") in \(article.source.name)"
         dateLabel.text = article.publishedAt.displayDate()
+    }
 
+    private func configureImageView() {
         if let urlToImage = article.urlToImage, let url = URL(string: urlToImage) {
             imageView.sd_setImage(with: url, placeholderImage: UIImage(systemName: "photo"))
-            imageView.snp.remakeConstraints { make in
-                make.top.equalTo(contentView).offset(16)
-                make.left.right.equalToSuperview().inset(16)
-                make.height.equalTo(200)
-            }
+            setImageViewConstraints(height: 200)
         } else {
-            imageView.snp.remakeConstraints { make in
-                make.top.equalTo(contentView).offset(16)
-                make.left.right.equalToSuperview().inset(16)
-                make.height.equalTo(0)
-            }
+            setImageViewConstraints(height: 0)
         }
     }
+
+    private func setImageViewConstraints(height: CGFloat) {
+        imageView.snp.remakeConstraints { make in
+            make.top.equalTo(contentView).offset(16)
+            make.left.right.equalToSuperview().inset(16)
+            make.height.equalTo(height)
+        }
+    }
+    
 }
 
 extension NewsDetailViewController {
     
     private func animateScrollView() {
         CATransaction.begin()
-        CATransaction.setAnimationDuration(2.0)
+        CATransaction.setAnimationDuration(1.0)
         CATransaction.setAnimationTimingFunction(CAMediaTimingFunction(name: .easeInEaseOut))
-        UIView.animate(withDuration: 2.0) {
+        UIView.animate(withDuration: 1.0) {
             self.scrollView.alpha = 1.0
         }
         CATransaction.commit()

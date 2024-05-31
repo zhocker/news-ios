@@ -172,8 +172,8 @@
 		CEF1A63E2C08BDF2003F052B /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
-				CE79200C2C09CCFF00E1AD66 /* NewsDetailViewController.swift */,
 				CE79200B2C09CCFF00E1AD66 /* NewsListViewController.swift */,
+				CE79200C2C09CCFF00E1AD66 /* NewsDetailViewController.swift */,
 			);
 			path = Scenes;
 			sourceTree = "<group>";

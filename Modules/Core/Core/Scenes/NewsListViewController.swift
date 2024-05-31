@@ -52,9 +52,13 @@ public class NewsListViewController: UIViewController, UITableViewDelegate, UITa
     }
 
     private func setupViews() {
-        view.addSubview(searchBar)
+        
+        self.title = "News"
+        
+        view.backgroundColor = .white
         view.addSubview(tableView)
         view.addSubview(loadingIndicator)
+        view.addSubview(searchBar)
 
         searchBar.delegate = self
         tableView.delegate = self

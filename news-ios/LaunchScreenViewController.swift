@@ -32,7 +32,6 @@ class LaunchScreenViewController: UIViewController {
 
         let navigationController = UINavigationController()
         navigationController.viewControllers = [mainViewController]
-        navigationController.navigationBar.isHidden = true
         
         sceneDelegate.window?.rootViewController = navigationController
         sceneDelegate.window?.makeKeyAndVisible()

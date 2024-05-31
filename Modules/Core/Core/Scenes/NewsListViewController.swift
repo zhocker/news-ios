@@ -66,6 +66,7 @@ public class NewsListViewController: UIViewController, UITableViewDelegate, UITa
         loadingIndicator.snp.makeConstraints { make in
             make.center.equalTo(view)
         }
+        
     }
 
     private func bindViewModel() {

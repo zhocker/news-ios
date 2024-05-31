@@ -67,6 +67,9 @@ class NewsTableViewCell: UITableViewCell {
     }
 
     private func setupViews() {
+        
+        selectionStyle = .none
+        
         contentView.addSubview(authorImageView)
         contentView.addSubview(authorLabel)
         contentView.addSubview(dateLabel)
@@ -120,7 +123,7 @@ class NewsTableViewCell: UITableViewCell {
     func configure(with article: Article) {
         titleLabel.text = article.title
         descriptionLabel.text = article.description
-        authorLabel.text = "\(article.author ?? "Unknown") in \(article.source.name)"
+        authorLabel.text = "Source: \(article.author ?? "Unknown") in \(article.source.name)"
         dateLabel.text = article.publishedAt.displayDate()
         if let authorImageUrl = URL(string: "https://example.com/author-image.png") {
             authorImageView.sd_setImage(with: authorImageUrl, placeholderImage: UIImage(systemName: "person.circle"))

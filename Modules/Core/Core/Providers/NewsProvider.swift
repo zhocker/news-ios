@@ -9,7 +9,7 @@ import Foundation
 import Moya
 
 enum NewsProvider {
-    case getNewsTopHeadlines(country: String, category: String, page: Int, apiKey: String)
+    case getNewsTopHeadlines(country: String, category: String, page: Int, query: String)
 }
 
 extension NewsProvider: TargetType {
@@ -37,7 +37,7 @@ extension NewsProvider: TargetType {
 
     var task: Task {
         switch self {
-        case .getNewsTopHeadlines(let country, let category, let page, let apiKey):
+        case .getNewsTopHeadlines(let country, let category, let page, let query):
             return .requestParameters(parameters:[:], encoding: URLEncoding.default)
 
 //            return .requestParameters(parameters:
@@ -45,8 +45,8 @@ extension NewsProvider: TargetType {
 //                                            "country": country,
 //                                            "category": category,
 //                                            "page": page,
-//                                            "apiKey": apiKey
-//                                        ], 
+//                                            "q": query
+//                                        ],
 //                                      encoding: URLEncoding.default)
         }
     }

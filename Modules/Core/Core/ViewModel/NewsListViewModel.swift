@@ -23,18 +23,26 @@ class NewsListViewModel {
         case toggleLoading(isLoading: Bool)
     }
 
-    private let newsService: NewsService = NewsService()
+    // Injected dependencies
+    private let newsService: NewsServiceType
     private let output: PassthroughSubject<Output, Never> = .init()
     private var cancellables = Set<AnyCancellable>()
-    private var currentPage: Int = 1
-    private var isLastPage: Bool = false
-    private var currentQuery: String = ""
-    private var isLoading: Bool = false
+    private(set) var currentPage: Int = 1
+    private(set) var isLastPage: Bool = false
+    private(set) var currentQuery: String = ""
+    private(set) var isLoading: Bool = false
+
+    // Dependency injection via initializer
+    init(newsService: NewsServiceType = NewsService()) {
+        self.newsService = newsService
+    }
 
     func transform(input: AnyPublisher<Input, Never>) -> AnyPublisher<Output, Never> {
-        input.sink { [weak self] event in
-            self?.handleInput(event)
-        }.store(in: &cancellables)
+        input
+            .sink { [weak self] event in
+                self?.handleInput(event)
+            }
+            .store(in: &cancellables)
         return output.eraseToAnyPublisher()
     }
 
@@ -55,59 +63,47 @@ class NewsListViewModel {
     }
 
     private func fetchTopHeadlines(reset: Bool) {
-        requestArticles(endpoint: .getNewsTopHeadlines(country: "us", category: "business", page: currentPage, apiKey: "afa0965c2de04bbcaa8617b67b2fe890"), 
-                        reset: reset)
+        requestArticles(query: "", reset: reset)
     }
 
     private func searchHeadlines(query: String, reset: Bool) {
-        requestArticles(endpoint: .getNewsTopHeadlines(country: "us",
-                                                       category: "business",
-                                                       page: currentPage,
-                                                       apiKey: "afa0965c2de04bbcaa8617b67b2fe890"), 
-                        reset: reset)
+        requestArticles(query: query, reset: reset)
     }
 
-    private func requestArticles(endpoint: NewsProvider, reset: Bool) {
-        guard !isLoading else { return }
-        
-        if reset {
-            currentPage = 1
-            isLastPage = false
-        } else {
-            guard !isLastPage else { return }
-            currentPage += 1
-        }
+    private func requestArticles(query: String, reset: Bool) {
+        guard !isLoading, !isLastPage || reset else { return }
+
+        updatePageInfo(for: reset)
         
         isLoading = true
         output.send(.toggleLoading(isLoading: true))
-        newsService.getNews(page: currentPage)
+
+        newsService.getNews(page: currentPage, query: query)
             .sink(receiveCompletion: { [weak self] completion in
-                
                 self?.isLoading = false
                 self?.output.send(.toggleLoading(isLoading: false))
-                
                 if case let .failure(error) = completion {
                     self?.output.send(.fetchArticlesDidFail(error: error))
                 }
-                
             }, receiveValue: { [weak self] response in
-                
-                self?.handleSuccess(response: response)
-                
+                self?.handleSuccess(response)
             })
             .store(in: &cancellables)
     }
 
-    private func handleError(error: Error) -> AnyPublisher<NewsResponse, Never> {
-        output.send(.fetchArticlesDidFail(error: error))
-        return Empty().eraseToAnyPublisher()
-    }
-
-    private func handleSuccess(response: NewsResponse) {
+    private func handleSuccess(_ response: NewsResponse) {
         if response.articles.isEmpty {
             isLastPage = true
         }
         output.send(.fetchArticlesDidSucceed(articles: response.articles))
     }
-    
+
+    private func updatePageInfo(for reset: Bool) {
+        if reset {
+            currentPage = 1
+            isLastPage = false
+        } else {
+            currentPage += 1
+        }
+    }
 }

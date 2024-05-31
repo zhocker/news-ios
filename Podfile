@@ -11,7 +11,8 @@ target 'news-ios' do
   pod 'SDWebImage'
   pod 'SnapKit'
   pod 'IQKeyboardManagerSwift'
-
+  pod 'ProgressHUD'
+  
   target 'news-iosTests' do
     inherit! :search_paths
     # Pods for testing
@@ -28,6 +29,7 @@ target 'Core' do
   project 'Modules/Core/Core'
   use_frameworks!
   
+  pod 'ProgressHUD'
   pod 'Moya'
   pod 'SDWebImage'
   pod 'SnapKit'

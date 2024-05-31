@@ -18,6 +18,7 @@ class NewsDetailViewController: UIViewController {
     private let scrollView: UIScrollView = {
         let scrollView = UIScrollView()
         scrollView.alwaysBounceVertical = true
+        scrollView.alpha = 0
         return scrollView
     }()
 
@@ -79,6 +80,7 @@ class NewsDetailViewController: UIViewController {
         setupNavigationBar()
         setupViews()
         populateData()
+        animateScrollView()
     }
 
     private func setupNavigationBar() {
@@ -174,5 +176,17 @@ class NewsDetailViewController: UIViewController {
             }
         }
     }
+}
 
+extension NewsDetailViewController {
+    
+    private func animateScrollView() {
+        CATransaction.begin()
+        CATransaction.setAnimationDuration(2.0)
+        CATransaction.setAnimationTimingFunction(CAMediaTimingFunction(name: .easeInEaseOut))
+        UIView.animate(withDuration: 2.0) {
+            self.scrollView.alpha = 1.0
+        }
+        CATransaction.commit()
+    }
 }

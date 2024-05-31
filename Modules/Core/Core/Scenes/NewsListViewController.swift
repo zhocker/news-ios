@@ -34,7 +34,14 @@ public class NewsListViewController: UIViewController, UITableViewDelegate, UITa
     private let loadingIndicator: UIActivityIndicatorView = {
         let indicator = UIActivityIndicatorView(style: .large)
         indicator.hidesWhenStopped = true
+        indicator.color = .blue
         return indicator
+    }()
+    
+    private let refreshControl: UIRefreshControl = {
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(didPullToRefresh), for: .valueChanged)
+        return refreshControl
     }()
     
     public override func viewDidLoad() {
@@ -52,6 +59,8 @@ public class NewsListViewController: UIViewController, UITableViewDelegate, UITa
         searchBar.delegate = self
         tableView.delegate = self
         tableView.dataSource = self
+        
+        tableView.refreshControl = refreshControl
 
         searchBar.snp.makeConstraints { make in
             make.top.equalTo(view.safeAreaLayoutGuide)
@@ -67,8 +76,16 @@ public class NewsListViewController: UIViewController, UITableViewDelegate, UITa
             make.center.equalTo(view)
         }
         
+        tableView.snp.makeConstraints { make in
+            make.edges.equalTo(view.safeAreaLayoutGuide)
+        }
+
     }
 
+    @objc private func didPullToRefresh() {
+        input.send(.viewDidLoad)
+    }
+    
     private func bindViewModel() {
         let output = viewModel.transform(input: input.eraseToAnyPublisher())
         output.receive(on: DispatchQueue.main).sink { [weak self] event in
@@ -81,9 +98,11 @@ public class NewsListViewController: UIViewController, UITableViewDelegate, UITa
         case .fetchArticlesDidSucceed(let articles):
             self.articles = articles
             self.tableView.reloadData()
+            self.refreshControl.endRefreshing()
         case .fetchArticlesDidFail(let error):
             // Handle error
             showError(error.localizedDescription)
+            self.refreshControl.endRefreshing()
         case .toggleLoading(let isLoading):
             if isLoading {
                 loadingIndicator.startAnimating()

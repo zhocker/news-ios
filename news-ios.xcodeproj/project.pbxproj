@@ -10,6 +10,8 @@
 		922E6464F2567A41CAB161E6 /* Pods_news_ios_news_iosUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 79D99C530BC00282B116FCC8 /* Pods_news_ios_news_iosUITests.framework */; };
 		A41845E593C7A8A8F4184F28 /* Pods_news_iosTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 57A8D99A27A6E31DD27B1B9A /* Pods_news_iosTests.framework */; };
 		B51C08670AED223EE8438A3B /* Pods_news_ios.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E2BE59BB4A118B9BC273A822 /* Pods_news_ios.framework */; };
+		CED577CE2C0A17E900CB6427 /* Core.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEF1A6462C08C29B003F052B /* Core.framework */; };
+		CED577CF2C0A17E900CB6427 /* Core.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CEF1A6462C08C29B003F052B /* Core.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		CEF1A5EB2C08B76C003F052B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF1A5EA2C08B76C003F052B /* AppDelegate.swift */; };
 		CEF1A5ED2C08B76C003F052B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF1A5EC2C08B76C003F052B /* SceneDelegate.swift */; };
 		CEF1A5EF2C08B76C003F052B /* LaunchScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF1A5EE2C08B76C003F052B /* LaunchScreenViewController.swift */; };
@@ -38,6 +40,20 @@
 			remoteInfo = "news-ios";
 		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		CED577D02C0A17E900CB6427 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				CED577CF2C0A17E900CB6427 /* Core.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		2C7780B3416EE929D6359F28 /* Pods-news-ios-news-iosUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-news-ios-news-iosUITests.debug.xcconfig"; path = "Target Support Files/Pods-news-ios-news-iosUITests/Pods-news-ios-news-iosUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -72,6 +88,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CEF1A6472C08C29B003F052B /* Core.framework in Frameworks */,
+				CED577CE2C0A17E900CB6427 /* Core.framework in Frameworks */,
 				B51C08670AED223EE8438A3B /* Pods_news_ios.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -185,6 +202,7 @@
 				CEF1A5E42C08B76C003F052B /* Frameworks */,
 				CEF1A5E52C08B76C003F052B /* Resources */,
 				F7975EDD2B49ECCC16E0160C /* [CP] Embed Pods Frameworks */,
+				CED577D02C0A17E900CB6427 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -595,8 +613,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_STYLE = Automatic;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
+				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = Q72VF93B33;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "news-ios/Info.plist";
@@ -613,6 +634,8 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.tnps.news-ios";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = "Profile_ Development_2023_10_02";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -625,8 +648,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_STYLE = Automatic;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
+				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = Q72VF93B33;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "news-ios/Info.plist";
@@ -643,6 +669,8 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.tnps.news-ios";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = "Profile_ Development_2023_10_02";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

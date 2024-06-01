@@ -10,7 +10,7 @@ import UIKit
 import SnapKit
 import SDWebImage
 
-class NewsTableViewCell: UITableViewCell {
+public class NewsTableViewCell: UITableViewCell {
     private let authorLabel: UILabel = {
         let label = UILabel()
         label.applyStyle(typo: .footer)
@@ -113,7 +113,7 @@ class NewsTableViewCell: UITableViewCell {
 
     }
 
-    func configure(with article: Article) {
+    public func configure(with article: Article) {
         titleLabel.text = article.title
         descriptionLabel.text = article.description
         authorLabel.text = "Source: \(article.author ?? "Unknown") in \(article.source.name)"

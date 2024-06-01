@@ -8,18 +8,18 @@
 import Foundation
 import Moya
 
-enum NewsProvider {
+public enum NewsProvider {
     case getNewsTopHeadlines(country: String, category: String, page: Int, query: String)
 }
 
 extension NewsProvider: TargetType {
     
-    var baseURL: URL {
+    public var baseURL: URL {
         return URL(string: "https://gist.githubusercontent.com/zhocker")!
 //        return URL(string: "https://newsapi.org/v2")!
     }
 //https://gist.githubusercontent.com/zhocker/fea7802f7201b9cf000a06ac505a1f01/raw/ef74cd9052b5a605096bd3fc0ae584d044decbee/news.json
-    var path: String {
+    public var path: String {
         switch self {
         case .getNewsTopHeadlines:
             return "/fea7802f7201b9cf000a06ac505a1f01/raw/ef74cd9052b5a605096bd3fc0ae584d044decbee/news.json"
@@ -27,15 +27,15 @@ extension NewsProvider: TargetType {
         }
     }
 
-    var method: Moya.Method {
+    public var method: Moya.Method {
         return .get
     }
 
-    var sampleData: Data {
+    public var sampleData: Data {
         return Data()
     }
 
-    var task: Task {
+    public var task: Task {
         switch self {
         case .getNewsTopHeadlines(let country, let category, let page, let query):
             return .requestParameters(parameters:[:], encoding: URLEncoding.default)
@@ -51,7 +51,7 @@ extension NewsProvider: TargetType {
         }
     }
 
-    var headers: [String : String]? {
+    public var headers: [String : String]? {
         return ["Content-type": "application/json"]
     }
     

@@ -10,6 +10,7 @@ import UIKit
 import Combine
 import SnapKit
 import SDWebImage
+import Core
 
 public class NewsListViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     private let viewModel = NewsListViewModel()

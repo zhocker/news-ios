@@ -32,9 +32,23 @@ target 'Core' do
   pod 'Moya'
   pod 'SDWebImage'
   pod 'SnapKit'
-  pod 'IQKeyboardManagerSwift'
 
   target 'CoreTests' do
+    inherit! :search_paths
+    # Pods for testing
+  end
+end
+
+target 'News' do
+  
+  project 'Modules/News/News'
+  use_frameworks!
+  
+  pod 'Moya'
+  pod 'SDWebImage'
+  pod 'SnapKit'
+
+  target 'NewsTests' do
     inherit! :search_paths
     # Pods for testing
   end

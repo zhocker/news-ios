@@ -11,6 +11,7 @@ import SDWebImage
 import SnapKit
 import SafariServices
 import Combine
+import Core
 
 class NewsDetailViewController: UIViewController {
     

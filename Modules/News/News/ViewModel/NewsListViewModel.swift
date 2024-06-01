@@ -8,6 +8,7 @@
 import Foundation
 import Combine
 import Moya
+import Core
 
 class NewsListViewModel {
     
@@ -34,7 +35,7 @@ class NewsListViewModel {
     private(set) var isLoading = false
 
     // Dependency injection via initializer
-    init(newsService: NewsServiceType = NewsService()) {
+    public init(newsService: NewsServiceType = NewsService()) {
         self.newsService = newsService
     }
 

@@ -6,7 +6,7 @@
 //
 
 import UIKit
-import Core
+import News
 import Lottie
 
 class LaunchScreenViewController: UIViewController {

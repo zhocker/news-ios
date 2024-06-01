@@ -25,12 +25,13 @@ class NewsListViewModel {
 
     // Injected dependencies
     private let newsService: NewsServiceType
-    private let output: PassthroughSubject<Output, Never> = .init()
+    private let output = PassthroughSubject<Output, Never>()
     private var cancellables = Set<AnyCancellable>()
-    private(set) var currentPage: Int = 1
-    private(set) var isLastPage: Bool = false
-    private(set) var currentQuery: String = ""
-    private(set) var isLoading: Bool = false
+    private var articles: [Article] = []
+    private(set) var currentPage = 1
+    private(set) var isLastPage = false
+    private(set) var currentQuery = ""
+    private(set) var isLoading = false
 
     // Dependency injection via initializer
     init(newsService: NewsServiceType = NewsService()) {
@@ -73,8 +74,14 @@ class NewsListViewModel {
     private func requestArticles(query: String, reset: Bool) {
         guard !isLoading, !isLastPage || reset else { return }
 
-        updatePageInfo(for: reset)
-        
+        if reset {
+            currentPage = 1
+            isLastPage = false
+            articles.removeAll()
+        } else {
+            currentPage += 1
+        }
+
         isLoading = true
         output.send(.toggleLoading(isLoading: true))
 
@@ -86,7 +93,8 @@ class NewsListViewModel {
                     self?.output.send(.fetchArticlesDidFail(error: error))
                 }
             }, receiveValue: { [weak self] response in
-                self?.handleSuccess(response)
+                guard let self = self else { return }
+                self.handleSuccess(response)
             })
             .store(in: &cancellables)
     }
@@ -94,16 +102,9 @@ class NewsListViewModel {
     private func handleSuccess(_ response: NewsResponse) {
         if response.articles.isEmpty {
             isLastPage = true
-        }
-        output.send(.fetchArticlesDidSucceed(articles: response.articles))
-    }
-
-    private func updatePageInfo(for reset: Bool) {
-        if reset {
-            currentPage = 1
-            isLastPage = false
         } else {
-            currentPage += 1
+            articles.append(contentsOf: response.articles)
+            output.send(.fetchArticlesDidSucceed(articles: articles))
         }
     }
 }

@@ -30,14 +30,14 @@ class NewsDetailViewController: UIViewController {
 
     private let titleLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.boldSystemFont(ofSize: 24)
+        label.applyStyle(typo: .h1)
         label.numberOfLines = 0
         return label
     }()
 
     private let descriptionLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 16)
+        label.applyStyle(typo: .content)
         label.numberOfLines = 0
         return label
     }()
@@ -45,22 +45,21 @@ class NewsDetailViewController: UIViewController {
     private let imageView: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFill
+        imageView.layer.cornerRadius = 15
         imageView.clipsToBounds = true
         return imageView
     }()
     
     private let authorLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 12)
-        label.textColor = .darkGray
+        label.applyStyle(typo: .footer)
         label.numberOfLines = 0
         return label
     }()
 
     private let dateLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 12)
-        label.textColor = .darkGray
+        label.applyStyle(typo: .footer)
         label.numberOfLines = 0
         return label
     }()

@@ -26,7 +26,7 @@ public class NewsListViewController: UIViewController, UITableViewDelegate, UITa
     
     private let tableView: UITableView = {
         let tableView = UITableView()
-        tableView.register(NewsTableViewCell.self, forCellReuseIdentifier: "NewsTableViewCell")
+        tableView.register(NewsTableViewCell.self, forCellReuseIdentifier: String(describing: NewsTableViewCell.self))
         tableView.rowHeight = 120
         return tableView
     }()
@@ -123,30 +123,47 @@ public class NewsListViewController: UIViewController, UITableViewDelegate, UITa
     }
 
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "NewsTableViewCell", for: indexPath) as? NewsTableViewCell else {
+        guard
+            let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: NewsTableViewCell.self), for: indexPath) as? NewsTableViewCell,
+            let article = self.articles.takeSafe(index: indexPath.row)
+        else {
             return UITableViewCell()
         }
-        cell.configure(with: articles[indexPath.row])
+        cell.configure(with: article)
         return cell
+    }
+    
+    public func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        if indexPath.row == self.articles.count - 1 {
+            input.send(.loadMore)
+        }
     }
 
     public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let article = articles[indexPath.row]
-        let detailVC = NewsDetailViewController(viewModel: NewsDetailViewModel(article: article))
-        navigationController?.pushViewController(detailVC, animated: true)
+        guard let article = self.articles.takeSafe(index: indexPath.row) else { return }
+        self.routeToNewsDetail(article: article)
     }
 
-    public func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        let offsetY = scrollView.contentOffset.y
-        let contentHeight = scrollView.contentSize.height
-        if offsetY > contentHeight - scrollView.frame.height * 4 {
-//            input.send(.loadMore)
-        }
-    }
+//    public func scrollViewDidScroll(_ scrollView: UIScrollView) {
+//        let offsetY = scrollView.contentOffset.y
+//        let contentHeight = scrollView.contentSize.height
+//        if offsetY > contentHeight - scrollView.frame.height * 4 {
+////            input.send(.loadMore)
+//        }
+//    }
 }
 
 extension NewsListViewController: UISearchBarDelegate {
     public func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         input.send(.search(searchText))
     }
+}
+
+extension NewsListViewController {
+    
+    func routeToNewsDetail(article: Article) {
+        let vc = NewsDetailViewController(viewModel: NewsDetailViewModel(article: article))
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
 }

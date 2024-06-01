@@ -13,22 +13,21 @@ import SDWebImage
 class NewsTableViewCell: UITableViewCell {
     private let authorLabel: UILabel = {
         let label = UILabel()
-        label.font = .systemFont(ofSize: 12)
-        label.textColor = .darkGray
+        label.applyStyle(typo: .footer)
         label.numberOfLines = 1
         return label
     }()
     
     private let titleLabel: UILabel = {
         let label = UILabel()
-        label.font = .boldSystemFont(ofSize: 16)
+        label.applyStyle(typo: .h2)
         label.numberOfLines = 2
         return label
     }()
     
     private let descriptionLabel: UILabel = {
         let label = UILabel()
-        label.font = .systemFont(ofSize: 14)
+        label.applyStyle(typo: .content)
         label.numberOfLines = 3
         return label
     }()
@@ -43,8 +42,7 @@ class NewsTableViewCell: UITableViewCell {
 
     private let dateLabel: UILabel = {
         let label = UILabel()
-        label.font = .systemFont(ofSize: 12)
-        label.textColor = .darkGray
+        label.applyStyle(typo: .footer)
         return label
     }()
 
@@ -112,12 +110,7 @@ class NewsTableViewCell: UITableViewCell {
             make.top.right.equalToSuperview().inset(10)
             make.bottom.lessThanOrEqualToSuperview().inset(10)
         }
-        
-        articleImageView.snp.remakeConstraints { make in
-            make.size.equalTo(CGSize(width: 80, height: 80))
-            make.top.right.equalToSuperview().inset(10)
-            make.bottom.lessThanOrEqualToSuperview().inset(10)
-        }
+
     }
 
     func configure(with article: Article) {

@@ -17,6 +17,7 @@
 		CED5780D2C0B084F00CB6427 /* NewsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED578082C0B084F00CB6427 /* NewsListViewController.swift */; };
 		CED5780E2C0B084F00CB6427 /* NewsListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED5780A2C0B084F00CB6427 /* NewsListViewModel.swift */; };
 		CED5780F2C0B084F00CB6427 /* NewsDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED5780B2C0B084F00CB6427 /* NewsDetailViewModel.swift */; };
+		CED578142C0B12D800CB6427 /* NewsListViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED578132C0B12D800CB6427 /* NewsListViewModelTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,6 +46,7 @@
 		CED578082C0B084F00CB6427 /* NewsListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsListViewController.swift; sourceTree = "<group>"; };
 		CED5780A2C0B084F00CB6427 /* NewsListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsListViewModel.swift; sourceTree = "<group>"; };
 		CED5780B2C0B084F00CB6427 /* NewsDetailViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsDetailViewModel.swift; sourceTree = "<group>"; };
+		CED578132C0B12D800CB6427 /* NewsListViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsListViewModelTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,6 +117,7 @@
 			isa = PBXGroup;
 			children = (
 				CED577EC2C0B07D200CB6427 /* NewsTests.swift */,
+				CED578132C0B12D800CB6427 /* NewsListViewModelTests.swift */,
 			);
 			path = NewsTests;
 			sourceTree = "<group>";
@@ -188,6 +191,7 @@
 				CED577E32C0B07D200CB6427 /* Sources */,
 				CED577E42C0B07D200CB6427 /* Frameworks */,
 				CED577E52C0B07D200CB6427 /* Resources */,
+				4EEA20BB23C352B2267A06F5 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -254,6 +258,23 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		4EEA20BB23C352B2267A06F5 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-NewsTests/Pods-NewsTests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-NewsTests/Pods-NewsTests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-NewsTests/Pods-NewsTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		88F2ED04A388E55741095239 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -317,6 +338,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CED577ED2C0B07D200CB6427 /* NewsTests.swift in Sources */,
+				CED578142C0B12D800CB6427 /* NewsListViewModelTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -527,7 +549,9 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.tnps.NewsTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -544,7 +568,9 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.tnps.NewsTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";

@@ -20,7 +20,7 @@ public class NewsService: NewsServiceType {
         
     }
     public func getNews(page: Int, query: String) -> AnyPublisher<NewsResponse, Error> {
-        let endpoint = NewsProvider.getNewsTopHeadlines(country: "us", category: "business", page: 1, query: query)
+        let endpoint = NewsProvider.getNewsTopHeadlines(country: "us", category: "business", page: page, query: query)
         let type = NewsResponse.self
         return provider.requestPublisher(endpoint, type: type)
     }

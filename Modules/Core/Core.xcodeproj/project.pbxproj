@@ -14,6 +14,7 @@
 		CE79201A2C09CE6800E1AD66 /* NewsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7920192C09CE6800E1AD66 /* NewsTableViewCell.swift */; };
 		CED577D22C0B022600CB6427 /* UILabel+Style.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED577D12C0B022600CB6427 /* UILabel+Style.swift */; };
 		CED577D42C0B049D00CB6427 /* CollectionItem+Safe.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED577D32C0B049D00CB6427 /* CollectionItem+Safe.swift */; };
+		CED578192C0B1C7D00CB6427 /* NewsResponseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED578182C0B1C7D00CB6427 /* NewsResponseTests.swift */; };
 		CEF1A62F2C08BDD3003F052B /* Core.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEF1A6262C08BDD3003F052B /* Core.framework */; };
 		CEF1A6342C08BDD3003F052B /* CoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF1A6332C08BDD3003F052B /* CoreTests.swift */; };
 		CEF1A6352C08BDD3003F052B /* Core.h in Headers */ = {isa = PBXBuildFile; fileRef = CEF1A6292C08BDD3003F052B /* Core.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -46,6 +47,7 @@
 		CE7920192C09CE6800E1AD66 /* NewsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsTableViewCell.swift; sourceTree = "<group>"; };
 		CED577D12C0B022600CB6427 /* UILabel+Style.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Style.swift"; sourceTree = "<group>"; };
 		CED577D32C0B049D00CB6427 /* CollectionItem+Safe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CollectionItem+Safe.swift"; sourceTree = "<group>"; };
+		CED578182C0B1C7D00CB6427 /* NewsResponseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsResponseTests.swift; sourceTree = "<group>"; };
 		CEF1A6262C08BDD3003F052B /* Core.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Core.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CEF1A6292C08BDD3003F052B /* Core.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Core.h; sourceTree = "<group>"; };
 		CEF1A62E2C08BDD3003F052B /* CoreTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CoreTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -150,6 +152,7 @@
 			isa = PBXGroup;
 			children = (
 				CEF1A6332C08BDD3003F052B /* CoreTests.swift */,
+				CED578182C0B1C7D00CB6427 /* NewsResponseTests.swift */,
 			);
 			path = CoreTests;
 			sourceTree = "<group>";
@@ -231,6 +234,7 @@
 				CEF1A62A2C08BDD3003F052B /* Sources */,
 				CEF1A62B2C08BDD3003F052B /* Frameworks */,
 				CEF1A62C2C08BDD3003F052B /* Resources */,
+				BFEB61EF2DBD906C9E6668AE /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -298,6 +302,23 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		BFEB61EF2DBD906C9E6668AE /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-CoreTests/Pods-CoreTests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-CoreTests/Pods-CoreTests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-CoreTests/Pods-CoreTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		CEBAE6348C92D69324A029D7 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -366,6 +387,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CEF1A6342C08BDD3003F052B /* CoreTests.swift in Sources */,
+				CED578192C0B1C7D00CB6427 /* NewsResponseTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -579,6 +601,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MARKETING_VERSION = 1.0;
@@ -597,6 +620,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MARKETING_VERSION = 1.0;

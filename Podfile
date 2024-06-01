@@ -15,11 +15,11 @@ target 'news-ios' do
 
   target 'news-iosTests' do
     inherit! :search_paths
-    # Pods for testing
-  end
-
-  target 'news-iosUITests' do
-    # Pods for testing
+    pod 'Moya'
+    pod 'SDWebImage'
+    pod 'SnapKit'
+    pod 'IQKeyboardManagerSwift'
+    pod 'lottie-ios'
   end
 
 end
@@ -35,7 +35,9 @@ target 'Core' do
 
   target 'CoreTests' do
     inherit! :search_paths
-    # Pods for testing
+    pod 'Moya'
+    pod 'SDWebImage'
+    pod 'SnapKit'
   end
 end
 
@@ -50,6 +52,8 @@ target 'News' do
 
   target 'NewsTests' do
     inherit! :search_paths
-    # Pods for testing
+    pod 'Moya'
+    pod 'SDWebImage'
+    pod 'SnapKit'
   end
 end

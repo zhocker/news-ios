@@ -15,15 +15,15 @@ public enum NewsProvider {
 extension NewsProvider: TargetType {
     
     public var baseURL: URL {
-        return URL(string: "https://gist.githubusercontent.com/zhocker")!
-//        return URL(string: "https://newsapi.org/v2")!
+//        return URL(string: "https://gist.githubusercontent.com/zhocker")!
+        return URL(string: "https://newsapi.org/v2")!
     }
-//https://gist.githubusercontent.com/zhocker/fea7802f7201b9cf000a06ac505a1f01/raw/ef74cd9052b5a605096bd3fc0ae584d044decbee/news.json
+
     public var path: String {
         switch self {
         case .getNewsTopHeadlines:
-            return "/fea7802f7201b9cf000a06ac505a1f01/raw/ef74cd9052b5a605096bd3fc0ae584d044decbee/news.json"
-//            return "/top-headlines"
+//            return "/fea7802f7201b9cf000a06ac505a1f01/raw/ef74cd9052b5a605096bd3fc0ae584d044decbee/news.json"
+            return "/top-headlines"
         }
     }
 
@@ -38,16 +38,16 @@ extension NewsProvider: TargetType {
     public var task: Task {
         switch self {
         case .getNewsTopHeadlines(let country, let category, let page, let query):
-            return .requestParameters(parameters:[:], encoding: URLEncoding.default)
-
-//            return .requestParameters(parameters:
-//                                        [
-//                                            "country": country,
-//                                            "category": category,
-//                                            "page": page,
-//                                            "q": query
-//                                        ],
-//                                      encoding: URLEncoding.default)
+//            return .requestParameters(parameters:[:], encoding: URLEncoding.default)
+//
+            return .requestParameters(parameters:
+                                        [
+                                            "country": country,
+                                            "category": category,
+                                            "page": page,
+                                            "q": query
+                                        ],
+                                      encoding: URLEncoding.default)
         }
     }
 

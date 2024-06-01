@@ -79,10 +79,6 @@ public class NewsListViewController: UIViewController, UITableViewDelegate, UITa
         loadingIndicator.snp.makeConstraints { make in
             make.center.equalTo(view)
         }
-        
-        tableView.snp.makeConstraints { make in
-            make.edges.equalTo(view.safeAreaLayoutGuide)
-        }
 
     }
 
@@ -136,7 +132,7 @@ public class NewsListViewController: UIViewController, UITableViewDelegate, UITa
 
     public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let article = articles[indexPath.row]
-        let detailVC = NewsDetailViewController(article: article)
+        let detailVC = NewsDetailViewController(viewModel: NewsDetailViewModel(article: article))
         navigationController?.pushViewController(detailVC, animated: true)
     }
 

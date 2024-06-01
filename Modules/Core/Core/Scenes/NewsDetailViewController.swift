@@ -10,6 +10,7 @@ import UIKit
 import SDWebImage
 import SnapKit
 import SafariServices
+import Combine
 
 class NewsDetailViewController: UIViewController {
     
@@ -64,10 +65,12 @@ class NewsDetailViewController: UIViewController {
         return label
     }()
 
-    private let article: Article
+    private let viewModel: NewsDetailViewModel
+    private var cancellables = Set<AnyCancellable>()
+    private let input = PassthroughSubject<NewsDetailViewModel.Input, Never>()
 
-    init(article: Article) {
-        self.article = article
+    init(viewModel: NewsDetailViewModel) {
+        self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
     }
 
@@ -79,8 +82,9 @@ class NewsDetailViewController: UIViewController {
         super.viewDidLoad()
         setupNavigationBar()
         setupViews()
-        populateData()
+        bindViewModel()
         animateScrollView()
+        input.send(.viewDidLoad)
     }
 
     private func setupNavigationBar() {
@@ -90,18 +94,18 @@ class NewsDetailViewController: UIViewController {
         backButton.tintColor = .black
         navigationItem.leftBarButtonItem = backButton
         
-        // add right button goto safari
+        // Add right button to open in Safari
         let safariButton = UIBarButtonItem(title: "Full Read", style: .plain, target: self, action: #selector(openInSafari))
         safariButton.tintColor = .black
         navigationItem.rightBarButtonItem = safariButton
     }
 
     @objc private func openInSafari() {
-        guard let url = URL(string: article.url) else { return }
+        guard let url = URL(string: viewModel.article.url) else { return }
         let safariVC = SFSafariViewController(url: url)
         present(safariVC, animated: true)
     }
-    
+
     @objc private func backButtonTapped() {
         navigationController?.popViewController(animated: true)
     }
@@ -129,7 +133,7 @@ class NewsDetailViewController: UIViewController {
         imageView.snp.makeConstraints { make in
             make.top.equalTo(contentView).offset(16)
             make.left.right.equalToSuperview().inset(16)
-            make.height.equalTo(200)
+            make.height.equalTo(0) // Initial height set to 0 for later update
         }
         
         titleLabel.snp.makeConstraints { make in
@@ -152,23 +156,29 @@ class NewsDetailViewController: UIViewController {
             make.left.right.equalToSuperview().inset(16)
             make.bottom.equalTo(contentView).offset(-16)
         }
-
     }
 
-    private func populateData() {
-        populateTextFields()
-        configureImageView()
+    private func bindViewModel() {
+        let output = viewModel.transform(input: Just(NewsDetailViewModel.Input.viewDidLoad).eraseToAnyPublisher())
+        output
+            .receive(on: RunLoop.main)
+            .sink { [weak self] in self?.handleOutput($0) }
+            .store(in: &cancellables)
     }
 
-    private func populateTextFields() {
-        titleLabel.text = article.title
-        descriptionLabel.text = article.description
-        authorLabel.text = "Source: \(article.author ?? "Unknown") in \(article.source.name)"
-        dateLabel.text = article.publishedAt.displayDate()
+    private func handleOutput(_ output: NewsDetailViewModel.Output) {
+        switch output {
+        case .displayArticle(imageUrl: let imageUrl, title: let title, desc: let desc, soruce: let source, updateAt: let updateAt):
+            populateData(imageUrl: imageUrl, title: title, desc: desc, soruce: source, updateAt: updateAt)
+        }
     }
 
-    private func configureImageView() {
-        if let urlToImage = article.urlToImage, let url = URL(string: urlToImage) {
+    private func populateData(imageUrl: String, title: String, desc: String, soruce: String, updateAt: String) {
+        titleLabel.text = title
+        descriptionLabel.text = desc
+        authorLabel.text = soruce
+        dateLabel.text = updateAt
+        if !imageUrl.isEmpty, let url = URL(string: imageUrl) {
             imageView.sd_setImage(with: url, placeholderImage: UIImage(systemName: "photo"))
             setImageViewConstraints(height: 200)
         } else {
@@ -177,17 +187,11 @@ class NewsDetailViewController: UIViewController {
     }
 
     private func setImageViewConstraints(height: CGFloat) {
-        imageView.snp.remakeConstraints { make in
-            make.top.equalTo(contentView).offset(16)
-            make.left.right.equalToSuperview().inset(16)
+        imageView.snp.updateConstraints { make in
             make.height.equalTo(height)
         }
     }
-    
-}
 
-extension NewsDetailViewController {
-    
     private func animateScrollView() {
         CATransaction.begin()
         CATransaction.setAnimationDuration(1.0)
@@ -197,4 +201,5 @@ extension NewsDetailViewController {
         }
         CATransaction.commit()
     }
+    
 }

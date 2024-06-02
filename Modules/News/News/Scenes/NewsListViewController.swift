@@ -84,7 +84,7 @@ public class NewsListViewController: UIViewController, UITableViewDelegate, UITa
     }
     
     @objc private func didPullToRefresh() {
-        input.send(.viewDidLoad)
+        input.send(.search(searchBar.text ?? ""))
     }
     
     private func bindViewModel() {

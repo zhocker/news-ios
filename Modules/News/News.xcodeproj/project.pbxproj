@@ -135,8 +135,8 @@
 		CED578062C0B084F00CB6427 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
-				CED578072C0B084F00CB6427 /* NewsDetailViewController.swift */,
 				CED578082C0B084F00CB6427 /* NewsListViewController.swift */,
+				CED578072C0B084F00CB6427 /* NewsDetailViewController.swift */,
 			);
 			path = Scenes;
 			sourceTree = "<group>";

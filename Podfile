@@ -10,7 +10,7 @@ target 'news-ios' do
   pod 'Moya'
   pod 'SDWebImage'
   pod 'SnapKit'
-  pod 'IQKeyboardManagerSwift'
+  pod 'IQKeyboardManager'
   pod 'lottie-ios'
 
   target 'news-iosTests' do
@@ -18,7 +18,7 @@ target 'news-ios' do
     pod 'Moya'
     pod 'SDWebImage'
     pod 'SnapKit'
-    pod 'IQKeyboardManagerSwift'
+    pod 'IQKeyboardManager'
     pod 'lottie-ios'
   end
 

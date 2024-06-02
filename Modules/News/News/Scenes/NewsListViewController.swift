@@ -16,8 +16,8 @@ public class NewsListViewController: UIViewController, UITableViewDelegate, UITa
     private let viewModel = NewsListViewModel()
     private var cancellables = Set<AnyCancellable>()
     private var articles: [Article] = []
-    
     private let input = PassthroughSubject<NewsListViewModel.Input, Never>()
+    private var searchWorkItem: DispatchWorkItem?
     
     private let searchBar: UISearchBar = {
         let searchBar = UISearchBar()
@@ -51,7 +51,7 @@ public class NewsListViewController: UIViewController, UITableViewDelegate, UITa
         bindViewModel()
         input.send(.viewDidLoad)
     }
-
+    
     private func setupViews() {
         
         self.title = "News"
@@ -60,29 +60,29 @@ public class NewsListViewController: UIViewController, UITableViewDelegate, UITa
         view.addSubview(tableView)
         view.addSubview(loadingIndicator)
         view.addSubview(searchBar)
-
+        
         searchBar.delegate = self
         tableView.delegate = self
         tableView.dataSource = self
         
         tableView.refreshControl = refreshControl
-
+        
         searchBar.snp.makeConstraints { make in
             make.top.equalTo(view.safeAreaLayoutGuide)
             make.left.right.equalToSuperview()
         }
-
+        
         tableView.snp.makeConstraints { make in
             make.top.equalTo(searchBar.snp.bottom)
             make.left.right.bottom.equalToSuperview()
         }
-
+        
         loadingIndicator.snp.makeConstraints { make in
             make.center.equalTo(view)
         }
-
+        
     }
-
+    
     @objc private func didPullToRefresh() {
         input.send(.viewDidLoad)
     }
@@ -93,7 +93,7 @@ public class NewsListViewController: UIViewController, UITableViewDelegate, UITa
             self?.handleOutput(event)
         }.store(in: &cancellables)
     }
-
+    
     private func handleOutput(_ output: NewsListViewModel.Output) {
         switch output {
         case .fetchArticlesDidSucceed(let articles):
@@ -112,17 +112,17 @@ public class NewsListViewController: UIViewController, UITableViewDelegate, UITa
             }
         }
     }
-
+    
     private func showError(_ message: String) {
         let alert = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "OK", style: .default))
         present(alert, animated: true)
     }
-
+    
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return articles.count
     }
-
+    
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard
             let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: NewsTableViewCell.self), for: indexPath) as? NewsTableViewCell,
@@ -139,24 +139,22 @@ public class NewsListViewController: UIViewController, UITableViewDelegate, UITa
             input.send(.loadMore)
         }
     }
-
+    
     public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard let article = self.articles.takeSafe(index: indexPath.row) else { return }
         self.routeToNewsDetail(article: article)
     }
-
-//    public func scrollViewDidScroll(_ scrollView: UIScrollView) {
-//        let offsetY = scrollView.contentOffset.y
-//        let contentHeight = scrollView.contentSize.height
-//        if offsetY > contentHeight - scrollView.frame.height * 4 {
-////            input.send(.loadMore)
-//        }
-//    }
+    
 }
 
 extension NewsListViewController: UISearchBarDelegate {
     public func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        input.send(.search(searchText))
+        searchWorkItem?.cancel()
+        let workItem = DispatchWorkItem { [weak self] in
+            self?.input.send(.search(searchText))
+        }
+        searchWorkItem = workItem
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5, execute: workItem)
     }
 }
 

@@ -111,16 +111,17 @@ public class NewsTableViewCell: UITableViewCell {
             make.bottom.lessThanOrEqualToSuperview().inset(10)
         }
 
+        authorImageView.image = UIImage(systemName: "person.circle")
+        
     }
 
     public func configure(with article: Article) {
-        titleLabel.text = article.title
-        descriptionLabel.text = article.description
-        authorLabel.text = "Source: \(article.author ?? "Unknown") in \(article.source.name)"
-        dateLabel.text = article.publishedAt.displayDate()
-        if let authorImageUrl = URL(string: "https://example.com/author-image.png") {
-            authorImageView.sd_setImage(with: authorImageUrl, placeholderImage: UIImage(systemName: "person.circle"))
-        }
+        
+        titleLabel.text = article.displayTitle
+        descriptionLabel.text = article.displayDescription
+        authorLabel.text = article.displayDescription
+        dateLabel.text = article.displayAuthorWithSource
+        
         if let urlToImage = article.urlToImage, let url = URL(string: urlToImage) {
             articleImageView.sd_setImage(with: url, placeholderImage: UIImage(systemName: "photo"))
             articleImageView.snp.remakeConstraints { make in

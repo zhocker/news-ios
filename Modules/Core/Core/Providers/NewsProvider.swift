@@ -45,7 +45,8 @@ extension NewsProvider: TargetType {
                                             "country": country,
                                             "category": category,
                                             "page": page,
-                                            "q": query
+                                            "q": query,
+                                            "apiKey" : "afa0965c2de04bbcaa8617b67b2fe890"
                                         ],
                                       encoding: URLEncoding.default)
         }

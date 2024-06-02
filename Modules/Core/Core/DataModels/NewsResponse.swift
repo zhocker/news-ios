@@ -23,6 +23,26 @@ public struct Article: Decodable {
     public let publishedAt: String
 }
 
+extension Article {
+    
+    var displayTitle: String {
+        return title
+    }
+    
+    var displayDescription: String {
+        return description ?? ""
+    }
+    
+    var displayDate: String {
+        return publishedAt.displayDate()
+    }
+    
+    var displayAuthorWithSource: String {
+        return "Source: \(author ?? "Unknown") in \(source.name)"
+    }
+        
+}
+
 public struct Source: Decodable {
     public let id: String?
     public let name: String

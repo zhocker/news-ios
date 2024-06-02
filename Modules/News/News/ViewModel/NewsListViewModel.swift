@@ -105,7 +105,8 @@ class NewsListViewModel {
             isLastPage = true
         } else {
             articles.append(contentsOf: response.articles)
-            output.send(.fetchArticlesDidSucceed(articles: articles))
         }
+        output.send(.fetchArticlesDidSucceed(articles: articles))
+
     }
 }

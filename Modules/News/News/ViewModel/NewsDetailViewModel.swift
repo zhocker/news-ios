@@ -46,10 +46,10 @@ class NewsDetailViewModel {
 
     private func displayArticle() {
         let displayArticle = Output.displayArticle(imageUrl: self.article.urlToImage ?? "",
-                                                   title: self.article.title,
-                                                   desc: self.article.description ?? "",
-                                                   soruce: "Source: \(article.author ?? "Unknown") in \(article.source.name)",
-                                                   updateAt: self.article.publishedAt.displayDate())
+                                                   title: self.article.displayTitle,
+                                                   desc: self.article.displayDescription,
+                                                   soruce: self.article.displayAuthorWithSource,
+                                                   updateAt: self.article.displayDate)
         self.output.send(displayArticle)
     }
     

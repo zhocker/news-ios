@@ -25,19 +25,19 @@ public struct Article: Decodable {
 
 extension Article {
     
-    var displayTitle: String {
+    public var displayTitle: String {
         return title
     }
     
-    var displayDescription: String {
+    public var displayDescription: String {
         return description ?? ""
     }
     
-    var displayDate: String {
+    public var displayDate: String {
         return publishedAt.displayDate()
     }
     
-    var displayAuthorWithSource: String {
+    public var displayAuthorWithSource: String {
         return "Source: \(author ?? "Unknown") in \(source.name)"
     }
         

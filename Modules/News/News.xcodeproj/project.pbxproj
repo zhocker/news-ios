@@ -18,6 +18,7 @@
 		CED5780E2C0B084F00CB6427 /* NewsListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED5780A2C0B084F00CB6427 /* NewsListViewModel.swift */; };
 		CED5780F2C0B084F00CB6427 /* NewsDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED5780B2C0B084F00CB6427 /* NewsDetailViewModel.swift */; };
 		CED578142C0B12D800CB6427 /* NewsListViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED578132C0B12D800CB6427 /* NewsListViewModelTests.swift */; };
+		CED5781B2C0C513100CB6427 /* NewsDetailViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED5781A2C0C513100CB6427 /* NewsDetailViewModelTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +48,7 @@
 		CED5780A2C0B084F00CB6427 /* NewsListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsListViewModel.swift; sourceTree = "<group>"; };
 		CED5780B2C0B084F00CB6427 /* NewsDetailViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsDetailViewModel.swift; sourceTree = "<group>"; };
 		CED578132C0B12D800CB6427 /* NewsListViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsListViewModelTests.swift; sourceTree = "<group>"; };
+		CED5781A2C0C513100CB6427 /* NewsDetailViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsDetailViewModelTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -118,6 +120,7 @@
 			children = (
 				CED577EC2C0B07D200CB6427 /* NewsTests.swift */,
 				CED578132C0B12D800CB6427 /* NewsListViewModelTests.swift */,
+				CED5781A2C0C513100CB6427 /* NewsDetailViewModelTests.swift */,
 			);
 			path = NewsTests;
 			sourceTree = "<group>";
@@ -338,6 +341,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CED577ED2C0B07D200CB6427 /* NewsTests.swift in Sources */,
+				CED5781B2C0C513100CB6427 /* NewsDetailViewModelTests.swift in Sources */,
 				CED578142C0B12D800CB6427 /* NewsListViewModelTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

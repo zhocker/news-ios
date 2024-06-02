@@ -68,7 +68,9 @@ class NewsDetailViewController: UIViewController {
     private let viewModel: NewsDetailViewModel
     private var cancellables = Set<AnyCancellable>()
     private let input = PassthroughSubject<NewsDetailViewModel.Input, Never>()
-
+    
+    private let kImageViewHeight: CGFloat = 200.0
+    
     init(viewModel: NewsDetailViewModel) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
@@ -133,7 +135,7 @@ class NewsDetailViewController: UIViewController {
         imageView.snp.makeConstraints { make in
             make.top.equalTo(contentView).offset(16)
             make.left.right.equalToSuperview().inset(16)
-            make.height.equalTo(0) // Initial height set to 0 for later update
+            make.height.equalTo(0)
         }
         
         titleLabel.snp.makeConstraints { make in
@@ -180,7 +182,7 @@ class NewsDetailViewController: UIViewController {
         dateLabel.text = updateAt
         if !imageUrl.isEmpty, let url = URL(string: imageUrl) {
             imageView.sd_setImage(with: url, placeholderImage: UIImage(systemName: "photo"))
-            setImageViewConstraints(height: 200)
+            setImageViewConstraints(height: kImageViewHeight)
         } else {
             setImageViewConstraints(height: 0)
         }

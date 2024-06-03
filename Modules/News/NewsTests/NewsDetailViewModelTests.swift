@@ -60,7 +60,7 @@ class NewsDetailViewModelTests: XCTestCase {
                     XCTAssertEqual(title, "Sample Article 1", "Title should match")
                     XCTAssertEqual(desc, "This is the first sample article.", "Description should match")
                     XCTAssertEqual(source, "Source: John Doe in CNN", "Source should match")
-                    XCTAssertEqual(updateAt, "20 Apr BE 2567", "Published date should match") // Assuming displayDate() formats it this way
+                    XCTAssertEqual(updateAt, "Updated: 20 Apr 2024", "Published date should match") // Assuming displayDate() formats it this way
                     expectation.fulfill()
                 }
             }

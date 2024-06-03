@@ -34,7 +34,7 @@ extension Article {
     }
     
     public var displayDate: String {
-        return publishedAt.displayDate()
+        return "Updated at \(publishedAt.displayDate())"
     }
     
     public var displayAuthorWithSource: String {

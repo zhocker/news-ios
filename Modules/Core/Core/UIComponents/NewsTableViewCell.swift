@@ -119,8 +119,8 @@ public class NewsTableViewCell: UITableViewCell {
         
         titleLabel.text = article.displayTitle
         descriptionLabel.text = article.displayDescription
-        authorLabel.text = article.displayDescription
-        dateLabel.text = article.displayAuthorWithSource
+        authorLabel.text = article.displayAuthorWithSource
+        dateLabel.text = article.displayDate
         
         if let urlToImage = article.urlToImage, let url = URL(string: urlToImage) {
             articleImageView.sd_setImage(with: url, placeholderImage: UIImage(systemName: "photo"))

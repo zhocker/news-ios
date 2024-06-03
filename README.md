@@ -1,4 +1,5 @@
 # news-ios
+# Please checkout `main` branch
 
 This is a simple News iOS application that displays news articles using data from a news API. The project is built using Xcode and utilizes CocoaPods for dependency management.
 
@@ -12,7 +13,6 @@ This is a simple News iOS application that displays news articles using data fro
 - CocoaPods
 
 ## Installation
-
 1. **Clone the repository:**
    ```bash
    git clone https://github.com/zhocker/news-ios.git

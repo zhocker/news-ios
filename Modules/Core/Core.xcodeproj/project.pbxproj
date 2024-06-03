@@ -15,6 +15,9 @@
 		CED577D22C0B022600CB6427 /* UILabel+Style.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED577D12C0B022600CB6427 /* UILabel+Style.swift */; };
 		CED577D42C0B049D00CB6427 /* CollectionItem+Safe.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED577D32C0B049D00CB6427 /* CollectionItem+Safe.swift */; };
 		CED578192C0B1C7D00CB6427 /* NewsResponseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED578182C0B1C7D00CB6427 /* NewsResponseTests.swift */; };
+		CED5781D2C0D835200CB6427 /* DisplayDateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED5781C2C0D835200CB6427 /* DisplayDateTests.swift */; };
+		CED5781F2C0D845F00CB6427 /* UILabelStyleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED5781E2C0D845F00CB6427 /* UILabelStyleTests.swift */; };
+		CED578212C0D849800CB6427 /* CollectionExtensionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED578202C0D849800CB6427 /* CollectionExtensionTests.swift */; };
 		CEF1A62F2C08BDD3003F052B /* Core.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEF1A6262C08BDD3003F052B /* Core.framework */; };
 		CEF1A6342C08BDD3003F052B /* CoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF1A6332C08BDD3003F052B /* CoreTests.swift */; };
 		CEF1A6352C08BDD3003F052B /* Core.h in Headers */ = {isa = PBXBuildFile; fileRef = CEF1A6292C08BDD3003F052B /* Core.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -48,6 +51,9 @@
 		CED577D12C0B022600CB6427 /* UILabel+Style.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Style.swift"; sourceTree = "<group>"; };
 		CED577D32C0B049D00CB6427 /* CollectionItem+Safe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CollectionItem+Safe.swift"; sourceTree = "<group>"; };
 		CED578182C0B1C7D00CB6427 /* NewsResponseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsResponseTests.swift; sourceTree = "<group>"; };
+		CED5781C2C0D835200CB6427 /* DisplayDateTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplayDateTests.swift; sourceTree = "<group>"; };
+		CED5781E2C0D845F00CB6427 /* UILabelStyleTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UILabelStyleTests.swift; sourceTree = "<group>"; };
+		CED578202C0D849800CB6427 /* CollectionExtensionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionExtensionTests.swift; sourceTree = "<group>"; };
 		CEF1A6262C08BDD3003F052B /* Core.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Core.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CEF1A6292C08BDD3003F052B /* Core.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Core.h; sourceTree = "<group>"; };
 		CEF1A62E2C08BDD3003F052B /* CoreTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CoreTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -153,6 +159,9 @@
 			children = (
 				CEF1A6332C08BDD3003F052B /* CoreTests.swift */,
 				CED578182C0B1C7D00CB6427 /* NewsResponseTests.swift */,
+				CED5781C2C0D835200CB6427 /* DisplayDateTests.swift */,
+				CED5781E2C0D845F00CB6427 /* UILabelStyleTests.swift */,
+				CED578202C0D849800CB6427 /* CollectionExtensionTests.swift */,
 			);
 			path = CoreTests;
 			sourceTree = "<group>";
@@ -386,7 +395,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CED5781F2C0D845F00CB6427 /* UILabelStyleTests.swift in Sources */,
+				CED578212C0D849800CB6427 /* CollectionExtensionTests.swift in Sources */,
 				CEF1A6342C08BDD3003F052B /* CoreTests.swift in Sources */,
+				CED5781D2C0D835200CB6427 /* DisplayDateTests.swift in Sources */,
 				CED578192C0B1C7D00CB6427 /* NewsResponseTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
